@@ -8,7 +8,7 @@ public class Courses {
         "Mathematics", "Java Programming", "Python", "Networks", "Artificial Intelligence"
     };
 
-    private final int MAX_CAPACITY = 3; // ✅ maximum students per course
+    private final int MAX_CAPACITY = 3; //  maximum students per course
 
     // Each course name → list of assigned student IDs
     private Map<String, List<String>> courseAllocations = new LinkedHashMap<>();
@@ -35,7 +35,7 @@ public class Courses {
             System.out.print("Enter choice: ");
 
             if (!input.hasNextInt()) {
-                System.out.println("⚠️ Please enter a valid number.");
+                System.out.println(" Please enter a valid number.");
                 input.nextLine();
                 continue;
             }
@@ -57,7 +57,7 @@ public class Courses {
                     break;
 
                 default:
-                    System.out.println("⚠️ Invalid choice! Try again.");
+                    System.out.println(" Invalid choice! Try again.");
             }
 
         } while (choice != 3);
@@ -68,7 +68,7 @@ public class Courses {
         List<String> allStudents = studentModule.getAllStudentIDs();
 
         if (allStudents == null || allStudents.isEmpty()) {
-            System.out.println("⚠️ No students registered yet.");
+            System.out.println("No students registered yet.");
             return;
         }
 
@@ -104,16 +104,16 @@ public class Courses {
             courseIndex = (courseIndex + 1) % availableCourses.length;
 
             if (!assigned) {
-                System.out.println("⚠️ Could not assign course for student " + id + " (all full)");
+                System.out.println(" Could not assign course for student " + id + " (all full)");
             }
         }
 
-        System.out.println("✅ Auto assignment complete. " + assignedCount + " students assigned to courses.");
+        System.out.println(" Auto assignment complete. " + assignedCount + " students assigned to courses.");
     }
 
     // Display course allocations
     public void displayAllocations() {
-        System.out.println("\n📋 COURSE ALLOCATIONS (Max per course: " + MAX_CAPACITY + ")");
+        System.out.println("\n COURSE ALLOCATIONS (Max per course: " + MAX_CAPACITY + ")");
         for (String course : availableCourses) {
             List<String> students = courseAllocations.get(course);
             System.out.println("\n" + course + " (" + students.size() + "/" + MAX_CAPACITY + "):");
@@ -127,3 +127,4 @@ public class Courses {
         }
     }
 }
+
