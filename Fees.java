@@ -28,7 +28,7 @@ public class Fees {
             System.out.print("Enter choice: ");
 
             if (!input.hasNextInt()) {
-                System.out.println("⚠️ Please enter a valid number.");
+                System.out.println(" Please enter a valid number.");
                 input.nextLine();
                 continue;
             }
@@ -47,7 +47,7 @@ public class Fees {
                     System.out.println("Returning to Main Menu...");
                     break;
                 default:
-                    System.out.println("⚠️ Invalid choice!");
+                    System.out.println(" Invalid choice!");
             }
 
         } while (choice != 3);
@@ -55,18 +55,18 @@ public class Fees {
 
     public void displayFeeStatus() {
         if (studentModule == null) {
-            System.out.println("⚠️ Student data not linked.");
+            System.out.println(" Student data not linked.");
             return;
         }
 
         List<Map<String, Object>> data = studentModule.getFeeData();
 
         if (data.isEmpty()) {
-            System.out.println("⚠️ No students found.");
+            System.out.println(" No students found.");
             return;
         }
 
-        System.out.println("\n📊 Student Fee Status:");
+        System.out.println("\n Student Fee Status:");
         for (Map<String, Object> entry : data) {
             String id = (String) entry.get("id");
             String name = (String) entry.get("name");
@@ -78,13 +78,13 @@ public class Fees {
 
     public void generateFeeReport() {
         if (studentModule == null) {
-            System.out.println("⚠️ Student data not linked.");
+            System.out.println(" Student data not linked.");
             return;
         }
 
         List<Map<String, Object>> data = studentModule.getFeeData();
         if (data.isEmpty()) {
-            System.out.println("⚠️ No student data to report.");
+            System.out.println(" No student data to report.");
             return;
         }
 
@@ -107,3 +107,4 @@ public class Fees {
         System.out.println("Outstanding: " + ((TOTAL_FEES * data.size()) - totalCollected));
     }
 }
+
