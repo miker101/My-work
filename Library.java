@@ -12,13 +12,13 @@ public class Library {
 
     private students studentModule; // shared student data
 
-    // ✅ Constructor to connect student module
+    //  Constructor to connect student module
     public Library(students studentModule) {
         this.studentModule = studentModule;
         preloadBooks(); // Add some books initially
     }
 
-    // 👇 Default constructor (for testing, can be removed if not needed)
+    // Default constructor (for testing, can be removed if not needed)
     public Library() {
         preloadBooks();
     }
@@ -97,7 +97,7 @@ public class Library {
         } while (choice != 6);
     }
 
-    // 📗 Borrow book
+    // Borrow book
     private void borrowBook(Scanner input) {
         System.out.print("Enter Student ID: ");
         String studentId = input.nextLine().trim();
@@ -111,43 +111,43 @@ public class Library {
         String isbn = input.nextLine().trim();
 
         if (!books.containsKey(isbn)) {
-            System.out.println("❌ Book not found in library.");
+            System.out.println("Book not found in library.");
             return;
         }
 
         Book book = books.get(isbn);
         if (book.isBorrowed) {
-            System.out.println("⚠️ Book already borrowed by " + book.borrowedBy);
+            System.out.println("Book already borrowed by " + book.borrowedBy);
         } else {
             book.isBorrowed = true;
             book.borrowedBy = studentId;
             history.push("Borrowed: " + book.title + " by " + studentId);
-            System.out.println("✅ Book '" + book.title + "' successfully borrowed by " + studentId);
+            System.out.println("Book '" + book.title + "' successfully borrowed by " + studentId);
         }
     }
 
-    // 📕 Return book
+    // Return book
     private void returnBook(Scanner input) {
         System.out.print("Enter Book ISBN to Return: ");
         String isbn = input.nextLine().trim();
 
         if (!books.containsKey(isbn)) {
-            System.out.println("❌ Book not found in library.");
+            System.out.println("Book not found in library.");
             return;
         }
 
         Book book = books.get(isbn);
         if (!book.isBorrowed) {
-            System.out.println("⚠️ Book is already available in the library.");
+            System.out.println("Book is already available in the library.");
         } else {
             history.push("Returned: " + book.title + " by " + book.borrowedBy);
-            System.out.println("✅ Book '" + book.title + "' returned by " + book.borrowedBy);
+            System.out.println("Book '" + book.title + "' returned by " + book.borrowedBy);
             book.isBorrowed = false;
             book.borrowedBy = null;
         }
     }
 
-    // 📚 Show all available books
+    // Show all available books
     private void showAvailableBooks() {
         System.out.println("\n📘 AVAILABLE BOOKS:");
         for (Book book : books.values()) {
@@ -157,9 +157,9 @@ public class Library {
         }
     }
 
-    // 📕 Show borrowed books and who borrowed them
+    // Show borrowed books and who borrowed them
     private void showBorrowedBooks() {
-        System.out.println("\n📕 BORROWED BOOKS:");
+        System.out.println("\n BORROWED BOOKS:");
         boolean found = false;
         for (Book book : books.values()) {
             if (book.isBorrowed) {
@@ -168,13 +168,13 @@ public class Library {
             }
         }
         if (!found) {
-            System.out.println("✅ No borrowed books right now.");
+            System.out.println(" No borrowed books right now.");
         }
     }
 
-    // 📜 Show recent borrow/return history (Stack)
+    //  recent borrow/return history (Stack)
     private void showHistory() {
-        System.out.println("\n📜 BORROW/RETURN HISTORY:");
+        System.out.println("\n BORROW/RETURN HISTORY:");
         if (history.isEmpty()) {
             System.out.println("No activity yet.");
         } else {
@@ -185,7 +185,7 @@ public class Library {
         }
     }
 
-    // 🔍 Check if a student exists in the student module
+    // Check if a student exists in the student module
     private boolean isStudentRegistered(String id) {
         if (studentModule == null) return false;
         List<Map<String, Object>> data = studentModule.getFeeData(); // reuse to get IDs
